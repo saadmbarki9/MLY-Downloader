@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-from PyQt5.uic import loadUiType
 
 import os
 from os import path
@@ -12,9 +11,9 @@ import humanize
 
 
 
-form_class,_ = loadUiType(path.join(path.dirname(__file__),'main.ui'))
+from main import *
 
-class Mainapp(QMainWindow , form_class):
+class Mainapp(QMainWindow , Ui_MainWindow):
     def __init__(self, parent=None):
         super(Mainapp,self).__init__(parent)
         QMainWindow.__init__(self)
@@ -25,6 +24,7 @@ class Mainapp(QMainWindow , form_class):
     
     def h_UI(self):
         self.setWindowTitle('MLY_Downloader')
+        self.setWindowIcon(QtGui.QIcon('icon.png'))
         self.setFixedSize(743,349)
     
     def h_Buttons(self):
@@ -140,6 +140,7 @@ class Mainapp(QMainWindow , form_class):
             best.download()
         
         QMessageBox.information(self,'Don','Download Accomplished')
+
 
 
 
